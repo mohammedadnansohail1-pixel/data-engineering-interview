@@ -383,6 +383,334 @@ Use STAR format.""",
                 "companies": ["All"],
                 "tags": ["behavioral", "communication", "conflict"]
             },
+
+            # Additional SQL Questions
+            {
+                "title": "Top N Records per Group",
+                "description": """Write a SQL query to find the top 3 highest-paid employees in each department.
+
+Table schema:
+- employees (employee_id INT, name VARCHAR, department_id INT, salary DECIMAL)
+
+Expected output: employee_id, name, department_id, salary, rank_in_dept""",
+                "category": "sql",
+                "difficulty": "medium",
+                "question_type": "coding",
+                "starter_code": "SELECT \n  employee_id,\n  name,\n  department_id,\n  salary\n  -- Your code here\nFROM employees",
+                "test_cases": {},
+                "companies": ["Microsoft", "Amazon", "Google"],
+                "tags": ["sql", "window-functions", "ranking", "partitioning"]
+            },
+            {
+                "title": "Pivot Table with CASE Statement",
+                "description": """Create a pivot table showing total sales by product category for each quarter.
+
+Table schema:
+- sales (sale_id INT, product_category VARCHAR, sale_date DATE, amount DECIMAL)
+
+Expected output: product_category, Q1_sales, Q2_sales, Q3_sales, Q4_sales""",
+                "category": "sql",
+                "difficulty": "hard",
+                "question_type": "coding",
+                "starter_code": "SELECT \n  product_category,\n  -- Your code here\nFROM sales\nGROUP BY product_category",
+                "test_cases": {},
+                "companies": ["Tableau", "Looker"],
+                "tags": ["sql", "pivot", "aggregation", "case-statement"]
+            },
+            {
+                "title": "Find Gaps in Sequential Data",
+                "description": """Find missing sequence numbers in a table of transactions.
+
+Table schema:
+- transactions (transaction_id INT, timestamp TIMESTAMP)
+
+Write a query to find gaps in transaction_id sequence. Return the missing transaction IDs.""",
+                "category": "sql",
+                "difficulty": "medium",
+                "question_type": "coding",
+                "starter_code": "-- Find missing transaction IDs\nSELECT \n  -- Your code here\nFROM transactions",
+                "test_cases": {},
+                "companies": ["PayPal", "Stripe"],
+                "tags": ["sql", "gaps-and-islands", "sequences"]
+            },
+            {
+                "title": "Cumulative Sum with Conditions",
+                "description": """Calculate cumulative sum of order values, but reset the sum when a refund occurs.
+
+Table schema:
+- orders (order_id INT, order_date DATE, amount DECIMAL, is_refund BOOLEAN)
+
+Expected output: order_id, order_date, amount, cumulative_sum""",
+                "category": "sql",
+                "difficulty": "hard",
+                "question_type": "coding",
+                "starter_code": "SELECT \n  order_id,\n  order_date,\n  amount\n  -- Your code here\nFROM orders\nORDER BY order_date",
+                "test_cases": {},
+                "companies": ["Shopify", "Amazon"],
+                "tags": ["sql", "window-functions", "conditional-logic"]
+            },
+
+            # Additional Python Questions
+            {
+                "title": "Implement Custom Hash Table",
+                "description": """Implement a simple hash table that supports get, put, and remove operations.
+
+Requirements:
+- Handle hash collisions using chaining
+- Support dynamic resizing when load factor > 0.75
+- O(1) average case for get/put operations
+
+Class signature:
+class HashTable:
+    def __init__(self, initial_size=16):
+        pass
+
+    def put(self, key, value):
+        pass
+
+    def get(self, key):
+        pass
+
+    def remove(self, key):
+        pass""",
+                "category": "python",
+                "difficulty": "hard",
+                "question_type": "coding",
+                "starter_code": """class HashTable:
+    def __init__(self, initial_size=16):
+        # Your code here
+        pass
+
+    def put(self, key, value):
+        # Your code here
+        pass
+
+    def get(self, key):
+        # Your code here
+        pass
+
+    def remove(self, key):
+        # Your code here
+        pass
+""",
+                "test_cases": [],
+                "companies": ["Google", "Amazon"],
+                "tags": ["python", "data-structures", "hash-table"]
+            },
+            {
+                "title": "Stream Processing with Windowing",
+                "description": """Implement a sliding window to calculate average of last N values in a data stream.
+
+Function signature:
+class MovingAverage:
+    def __init__(self, window_size: int):
+        pass
+
+    def add(self, value: float) -> float:
+        # Add value and return current moving average
+        pass
+
+Example:
+ma = MovingAverage(3)
+ma.add(1.0)  # returns 1.0
+ma.add(2.0)  # returns 1.5
+ma.add(3.0)  # returns 2.0
+ma.add(4.0)  # returns 3.0 (average of 2, 3, 4)""",
+                "category": "python",
+                "difficulty": "medium",
+                "question_type": "coding",
+                "starter_code": """from collections import deque
+
+class MovingAverage:
+    def __init__(self, window_size: int):
+        # Your code here
+        pass
+
+    def add(self, value: float) -> float:
+        # Your code here
+        pass
+""",
+                "test_cases": [
+                    {
+                        "function": "MovingAverage",
+                        "operations": ["add", "add", "add", "add"],
+                        "values": [1.0, 2.0, 3.0, 4.0],
+                        "expected": [1.0, 1.5, 2.0, 3.0]
+                    }
+                ],
+                "companies": ["Kafka", "Flink", "Spark"],
+                "tags": ["python", "streaming", "sliding-window"]
+            },
+            {
+                "title": "Optimize DataFrame Operations",
+                "description": """Given a slow pandas operation, optimize it for better performance.
+
+Current code (slow):
+```python
+import pandas as pd
+
+def process_large_dataset(df):
+    result = []
+    for idx, row in df.iterrows():
+        if row['value'] > 100:
+            result.append({
+                'id': row['id'],
+                'category': row['category'],
+                'doubled': row['value'] * 2
+            })
+    return pd.DataFrame(result)
+```
+
+Rewrite this function to be 10x+ faster using vectorized operations.""",
+                "category": "python",
+                "difficulty": "medium",
+                "question_type": "coding",
+                "starter_code": """import pandas as pd
+
+def process_large_dataset(df):
+    # Optimize this function
+    # Original slow code uses iterrows()
+    # Your optimized code here
+    pass
+""",
+                "test_cases": [],
+                "companies": ["Pandas", "NumPy"],
+                "tags": ["python", "pandas", "optimization", "vectorization"]
+            },
+            {
+                "title": "Implement Rate Limiter",
+                "description": """Implement a rate limiter that allows N requests per time window.
+
+Use the token bucket algorithm:
+- Bucket starts with N tokens
+- Each request consumes 1 token
+- Tokens refill at rate R per second
+- Return True if request allowed, False otherwise
+
+Class signature:
+class RateLimiter:
+    def __init__(self, max_requests: int, window_seconds: int):
+        pass
+
+    def allow_request(self) -> bool:
+        pass""",
+                "category": "python",
+                "difficulty": "hard",
+                "question_type": "coding",
+                "starter_code": """import time
+
+class RateLimiter:
+    def __init__(self, max_requests: int, window_seconds: int):
+        # Your code here
+        pass
+
+    def allow_request(self) -> bool:
+        # Your code here
+        pass
+""",
+                "test_cases": [],
+                "companies": ["Redis", "AWS", "Cloudflare"],
+                "tags": ["python", "rate-limiting", "algorithms"]
+            },
+
+            # Additional System Design Questions
+            {
+                "title": "Design a Real-time Analytics Dashboard",
+                "description": """Design a system to power a real-time analytics dashboard showing user activity metrics.
+
+Requirements:
+- Ingest 50K events/second
+- Display metrics with <5 second latency
+- Support drill-down queries
+- Handle spike traffic (3x normal)
+- Store 90 days of raw data
+
+Discuss:
+1. Event ingestion architecture
+2. Storage strategy (hot/warm/cold)
+3. Query optimization techniques
+4. Caching layer design
+5. Scalability approach""",
+                "category": "system_design",
+                "difficulty": "hard",
+                "question_type": "design",
+                "starter_code": None,
+                "test_cases": None,
+                "companies": ["Datadog", "New Relic", "Splunk"],
+                "tags": ["system-design", "real-time", "analytics", "streaming"]
+            },
+            {
+                "title": "Design a Data Quality Monitoring System",
+                "description": """Design a system to monitor data quality across hundreds of data pipelines.
+
+Requirements:
+- Detect schema changes automatically
+- Identify data anomalies (nulls, outliers, duplicates)
+- Alert on quality degradation
+- Track data lineage
+- Generate quality reports
+
+Describe:
+1. Architecture components
+2. Quality checks to implement
+3. Alerting strategy
+4. Lineage tracking approach
+5. Scalability considerations""",
+                "category": "system_design",
+                "difficulty": "hard",
+                "question_type": "design",
+                "starter_code": None,
+                "test_cases": None,
+                "companies": ["Great Expectations", "Monte Carlo", "Datafold"],
+                "tags": ["system-design", "data-quality", "monitoring"]
+            },
+
+            # Additional Behavioral Questions
+            {
+                "title": "Handling Production Incidents",
+                "description": """Tell me about a time when you had to troubleshoot and fix a critical production issue with a data pipeline.
+
+Address using STAR format:
+- Situation: What broke and what was the impact?
+- Task: What was your role in fixing it?
+- Action: How did you diagnose and resolve the issue?
+- Result: What was the outcome and what did you learn?
+
+Include:
+- Debugging approach
+- Communication with stakeholders
+- Post-mortem actions""",
+                "category": "behavioral",
+                "difficulty": "medium",
+                "question_type": "behavioral",
+                "starter_code": None,
+                "test_cases": None,
+                "companies": ["All"],
+                "tags": ["behavioral", "incident-response", "debugging"]
+            },
+            {
+                "title": "Technical Leadership Experience",
+                "description": """Describe a time when you led a technical initiative or mentored junior engineers.
+
+Use STAR format and address:
+- Situation: What was the project or mentorship situation?
+- Task: What were you responsible for?
+- Action: How did you lead or mentor?
+- Result: What was the impact on the team/individual?
+
+Focus on:
+- Leadership style
+- Teaching approach
+- Challenges faced
+- Outcomes achieved""",
+                "category": "behavioral",
+                "difficulty": "medium",
+                "question_type": "behavioral",
+                "starter_code": None,
+                "test_cases": None,
+                "companies": ["All"],
+                "tags": ["behavioral", "leadership", "mentorship"]
+            },
         ]
 
         # Add questions to database
